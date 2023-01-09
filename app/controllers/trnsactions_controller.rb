@@ -1,4 +1,5 @@
 class TrnsactionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_trnsaction, only: %i[ show edit update destroy ]
 
   # GET /trnsactions or /trnsactions.json

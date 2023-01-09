@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  get 'users/index'
   devise_for :users
-  root "ctegories#index"
+  root "users#index"
   resources :trnsactions
   resources :ctegories
 end

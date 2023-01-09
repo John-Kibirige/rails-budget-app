@@ -1,7 +1,5 @@
 class ApplicationController < ActionController::Base
-    before_action :authenticate_user!
-
-     protect_from_forgery with: :exception
+    protect_from_forgery with: :exception
     before_action :update_allowed_parameters, if: :devise_controller?
 
   # Catch all CanCan errors and alert the user of the exception
@@ -19,6 +17,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    stored_location_for(resource) || root_path
+    stored_location_for(resource) || ctegories_path
   end
 end

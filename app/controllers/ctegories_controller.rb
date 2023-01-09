@@ -1,4 +1,5 @@
 class CtegoriesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_ctegory, only: %i[ show edit update destroy ]
 
   # GET /ctegories or /ctegories.json
