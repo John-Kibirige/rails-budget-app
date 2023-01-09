@@ -72,3 +72,6 @@ end
 
 # devise
 gem 'devise'
+
+# cancan
+gem 'cancancan'
