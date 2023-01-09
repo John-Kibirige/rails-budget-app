@@ -67,3 +67,5 @@ group :development do
   # gem "spring"
 end
 
+# devise
+gem 'devise'
