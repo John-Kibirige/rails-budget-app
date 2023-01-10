@@ -1,15 +1,16 @@
-
-<% transaction_categories.each do |t_category|%>
-  <div class="border mb-4 flex justify-between">
-    <div>
-      <p class="">
-        <strong class="block font-medium mb-1"> <%= t_category.trnsaction.name.capitalize %></strong>
+<div class=" mb-5">
+  <% transaction_categories.each do |t_category|%>
+    <div class="border mb-4 flex justify-between">
+      <div>
+        <p class="">
+          <strong class="block font-medium mb-1"> <%= t_category.trnsaction.name.capitalize %></strong>
+        </p>
+        <small>Transaction id: <%= t_category.trnsaction.created_at.strftime('%s%L')%></small>
+        <p><%= t_category.trnsaction.created_at.strftime('%I:%M %p').downcase %></p>
+      </div>
+      <p class="my-5">
+        <strong class="block font-medium mb-1"><%= t_category.trnsaction.amount %></strong>
       </p>
-      <small>Transaction id: <%= t_category.trnsaction.created_at.strftime('%s%L')%></small>
-      <p><%= t_category.trnsaction.created_at.strftime('%I:%M %p').downcase %></p>
     </div>
-    <p class="my-5">
-      <strong class="block font-medium mb-1"><%= t_category.trnsaction.amount %></strong>
-    </p>
-  </div>
-<% end %>
+  <% end %>
+</div>

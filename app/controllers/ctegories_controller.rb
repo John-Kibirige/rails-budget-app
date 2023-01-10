@@ -5,6 +5,7 @@ class CtegoriesController < ApplicationController
   # GET /ctegories or /ctegories.json
   def index
     @ctegories = Ctegory.all
+
   end
 
   # GET /ctegories/1 or /ctegories/1.json
@@ -69,4 +70,9 @@ class CtegoriesController < ApplicationController
     def ctegory_params
       params.require(:ctegory).permit(:name, :icon)
     end
+
+    def total name
+      "Name: #{name}"
+    end
 end
+

@@ -14,9 +14,12 @@
       </div>
 
       <div>
-        <p>$total</p>
+        <p>$<%= ctegory.transaction_categories.includes(:trnsaction).map{|t_cat| t_cat.trnsaction.amount}.sum
+%></p>
       </div>
 
     </div>
   <% end %>
 </section>
+
+
