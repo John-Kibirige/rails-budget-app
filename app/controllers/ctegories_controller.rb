@@ -27,7 +27,7 @@ class CtegoriesController < ApplicationController
 
     respond_to do |format|
       if @ctegory.save
-        format.html { redirect_to ctegory_url(@ctegory), notice: "Ctegory was successfully created." }
+        format.html { redirect_to ctegories_url, notice: "Ctegory was successfully created." }
         format.json { render :show, status: :created, location: @ctegory }
       else
         format.html { render :new, status: :unprocessable_entity }

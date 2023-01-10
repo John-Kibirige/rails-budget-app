@@ -1,4 +1,4 @@
-<%= form_with(model: trnsaction, class: "contents") do |form| %>
+<%= form_with(model: trnsaction, url: ctegory_trnsactions_path, class: "contents") do |form| %>
   <% if trnsaction.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(trnsaction.errors.count, "error") %> prohibited this trnsaction from being saved:</h2>
@@ -18,7 +18,7 @@
 
   <div class="my-5">
     <%= form.label :amount %>
-    <%= form.number_field :amount, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :amount, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="inline">

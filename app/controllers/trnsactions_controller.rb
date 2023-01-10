@@ -4,7 +4,9 @@ class TrnsactionsController < ApplicationController
 
   # GET /trnsactions or /trnsactions.json
   def index
-    @trnsactions = Trnsaction.all
+    @trnsactions = Trnsaction.order(created_at: :desc)
+    @ctegory = Ctegory.find(params[:ctegory_id])
+    @transaction_categories = @ctegory.transaction_categories.order(created_at: :desc).includes(:trnsaction)
   end
 
   # GET /trnsactions/1 or /trnsactions/1.json
@@ -13,6 +15,7 @@ class TrnsactionsController < ApplicationController
 
   # GET /trnsactions/new
   def new
+    @ctegory = Ctegory.find(params[:ctegory_id])
     @trnsaction = Trnsaction.new
   end
 
@@ -23,14 +26,16 @@ class TrnsactionsController < ApplicationController
   # POST /trnsactions or /trnsactions.json
   def create
     @trnsaction = Trnsaction.new(trnsaction_params)
+    @trnsaction.author_id = current_user.id
 
     respond_to do |format|
+      category_id = params[:ctegory_id]
       if @trnsaction.save
-        format.html { redirect_to trnsaction_url(@trnsaction), notice: "Trnsaction was successfully created." }
-        format.json { render :show, status: :created, location: @trnsaction }
+        # create save this to the transaction categories table
+        TransactionCategory.create(ctegory_id: category_id, trnsaction_id: @trnsaction.id)
+        format.html { redirect_to ctegory_trnsactions_url(category_id), notice: "Trnsaction was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @trnsaction.errors, status: :unprocessable_entity }
       end
     end
   end

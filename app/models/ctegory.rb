@@ -4,7 +4,7 @@ class Ctegory < ApplicationRecord
     has_many :transaction_categories
     has_many :trnsactions, through: :transaction_categories
 
-    validates :name, presence: true
+    validates :name, presence: true, uniqueness: true
     validates :icon, presence: true
 
 end

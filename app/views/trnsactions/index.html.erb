@@ -1,14 +1,9 @@
-<div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
+<section class="">
+  <%= render "ctegories/ctegory", ctegory:@ctegory%>
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Trnsactions</h1>
-    <%= link_to 'New trnsaction', new_trnsaction_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
+  <h1 class="font-bold text-1xl">Transactions</h1>
+  <%= render "trnsactions/trnsaction", transaction_categories:@transaction_categories %>
 
-  <div id="trnsactions" class="min-w-full">
-    <%= render @trnsactions %>
-  </div>
-</div>
+  <%= link_to 'New trnsaction', new_ctegory_trnsaction_path(@ctegory), class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+</section>
+
