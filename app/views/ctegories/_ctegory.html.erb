@@ -1,17 +1,26 @@
-<div id="<%= dom_id ctegory %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= ctegory.name %>
-  </p>
+<section id="<%= dom_id ctegory %>", class="flex gap-4 border rounded mb-4">
+  <%= link_to ctegory_path(ctegory), class: 'block w-full' do %>
+    <div class="my-5 font-medium mb-1 w-24 h-24">
+      <img src="<%= ctegory.icon %>" alt=<%="#{ctegory.name}-avatar"%> class="block w-full h-full rounded">
+    </div>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Icon:</strong>
-    <%= ctegory.icon %>
-  </p>
+    <div class="">
+      <div class="">
+        <p class="my-5 font-medium mb-1">
+          <%= ctegory.name %>
+        </p>
 
-  <% if action_name != "show" %>
-    <%= link_to "Show this ctegory", ctegory, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this ctegory', edit_ctegory_path(ctegory), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
+        <small class=""><%= ctegory.created_at.to_time.strftime('%b %d %Y')%></small>
+      </div>
+
+      <div>
+        <p>$total</p>
+      </div>
+
+    </div>
   <% end %>
-</div>
+
+
+
+
+</section>

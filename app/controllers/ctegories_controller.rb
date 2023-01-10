@@ -5,7 +5,6 @@ class CtegoriesController < ApplicationController
   # GET /ctegories or /ctegories.json
   def index
     @ctegories = Ctegory.all
-    @category = Ctegory.first
   end
 
   # GET /ctegories/1 or /ctegories/1.json
@@ -24,6 +23,7 @@ class CtegoriesController < ApplicationController
   # POST /ctegories or /ctegories.json
   def create
     @ctegory = Ctegory.new(ctegory_params)
+    @ctegory.author_id = current_user.id
 
     respond_to do |format|
       if @ctegory.save
