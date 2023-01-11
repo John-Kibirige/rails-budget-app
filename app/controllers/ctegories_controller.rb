@@ -10,6 +10,8 @@ class CtegoriesController < ApplicationController
 
   # GET /ctegories/1 or /ctegories/1.json
   def show
+    @ctegory = Ctegory.find(params[:id])
+    @transaction_categories = @ctegory.transaction_categories.order(created_at: :desc).includes(:trnsaction)
   end
 
   # GET /ctegories/new
