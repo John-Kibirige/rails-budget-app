@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root "users#index"
 
-  resources :ctegories do
-    resources :trnsactions
-  end
+
+  resources :ctegories
+  resources :trnsactions
 end
