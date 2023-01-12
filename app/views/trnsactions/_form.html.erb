@@ -1,7 +1,7 @@
 <%= form_with(model: trnsaction, url: trnsactions_path, class: "contents") do |form| %>
   <% if trnsaction.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(trnsaction.errors.count, "error") %> prohibited this trnsaction from being saved:</h2>
+      <h2><%= pluralize(trnsaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
 
       <ul>
         <% trnsaction.errors.each do |error| %>
@@ -23,10 +23,10 @@
 
   <div class="mb-3">
     <%= form.label :Please_select_category_you_want, class: "block"%>
-    <%= form.collection_select :ctegory_id, categories || [], :id, :name, :prompt => true, class: "select-inventory-food" %>
+    <%= form.collection_select :ctegory_id, categories || [], :id, :name, :prompt => true, class: "select" %>
   </div>
 
   <div class="inline">
-    <%= form.submit 'Save', class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit 'Save', class: "rounded-lg py-3 px-5 bg-zei-green text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>
