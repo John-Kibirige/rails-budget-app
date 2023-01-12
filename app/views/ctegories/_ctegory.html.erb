@@ -12,7 +12,7 @@
         <small class="block w-20"><%= ctegory.created_at.to_time.strftime('%b %d %Y')%></small>
       </div>
 
-      <p class=" ml-24 font-bold">$<%= ctegory.transaction_categories.includes(:trnsaction).map{|t_cat| t_cat.trnsaction.amount}.sum %></p>
+      <p class=" font-bold absolute right-10">$<%= ctegory.transaction_categories.includes(:trnsaction).map{|t_cat| t_cat.trnsaction.amount}.sum %></p>
     </div>
     </div>
   <% end %>
