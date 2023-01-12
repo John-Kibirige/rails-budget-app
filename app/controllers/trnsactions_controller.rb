@@ -6,8 +6,7 @@ class TrnsactionsController < ApplicationController
   # GET /trnsactions or /trnsactions.json
   def index
     @trnsactions = Trnsaction.order(created_at: :desc)
-    @ctegory = Ctegory.find(params[:ctegory_id])
-    @transaction_categories = @ctegory.transaction_categories.order(created_at: :desc).includes(:trnsaction)
+    # @transaction_categories = transaction.transaction_categories.order(created_at: :desc).includes(:ctegory)
   end
 
   # GET /trnsactions/1 or /trnsactions/1.json
