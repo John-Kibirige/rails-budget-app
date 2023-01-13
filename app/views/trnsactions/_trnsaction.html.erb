@@ -1,15 +1,15 @@
 <div class=" mb-5">
-  <% transaction_categories.each do |t_category|%>
+  <% transactions.each do |trnsaction|%>
     <div class="mb-4 flex justify-between bg-white border p-2 rounded mx-3">
       <div>
         <p class="">
-          <strong class="block font-medium mb-1"> <%= t_category.trnsaction.name.capitalize %></strong>
+          <strong class="block font-medium mb-1"> <%= trnsaction.name.capitalize %></strong>
         </p>
-        <small>Transaction id: <%= t_category.trnsaction.created_at.strftime('%s%L')%></small>
-        <p><%= t_category.trnsaction.created_at.strftime('%I:%M %p').downcase %></p>
+        <small>Transaction id: <%= trnsaction.created_at.strftime('%s%L')%></small>
+        <p><%= trnsaction.created_at.strftime('%I:%M %p').downcase %></p>
       </div>
       <p class="my-5">
-        <strong class="block font-medium mb-1"><%= t_category.trnsaction.amount %></strong>
+        <strong class="block font-medium mb-1"><%= trnsaction.amount %></strong>
       </p>
     </div>
   <% end %>

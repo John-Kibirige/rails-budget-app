@@ -21,9 +21,13 @@
     <%= form.text_field :amount, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :Please_select_category_you_want, class: "block"%>
-    <%= form.collection_select :ctegory_id, categories || [], :id, :name, :prompt => true, class: "select" %>
+  <div id="checkboxes" class="mb-3 border border-slate-600 p-2 scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-900 h-32">
+    <% categories.each do |category|%>
+      <div>
+        <%= form.check_box :categories, {multiple: true}, category.id, nil%>
+        <%= form.label category.name %>
+      </div>
+    <% end %>
   </div>
 
   <div class="inline">

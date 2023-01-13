@@ -2,7 +2,7 @@
 
 <section class="mt-4">
   <%= render "ctegories/ctegory", ctegory:@ctegory%>
-  <%= render "trnsactions/trnsaction", transaction_categories:@transaction_categories %>
+  <%= render "trnsactions/trnsaction", transactions:@transactions %>
 
   <%= link_to 'New transaction',new_trnsaction_path, class: "w-full py-3 px-5 bg-zei-green text-white font-medium mt-3 uppercase text-2xl text-center block mb-5" %>
 </section>

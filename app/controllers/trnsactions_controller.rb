@@ -27,7 +27,7 @@ class TrnsactionsController < ApplicationController
   def create
     name = params["trnsaction"]["name"]
     amount =params["trnsaction"]["amount"]
-    ctegory_id = params["trnsaction"]["ctegory_id"]
+    category_ids = params["trnsaction"]["categories"]
 
     @trnsaction = Trnsaction.new(name: name, amount: amount)
     @trnsaction.author_id = current_user.id
@@ -36,8 +36,8 @@ class TrnsactionsController < ApplicationController
     respond_to do |format|
       if @trnsaction.save
         # create save this to the transaction categories table
-        TransactionCategory.create(ctegory_id: ctegory_id, trnsaction_id: @trnsaction.id)
-        format.html { redirect_to ctegory_url(ctegory_id), notice: "Trnsaction was successfully created." }
+        create_transaction_category(category_ids, @trnsaction)
+        format.html { redirect_to ctegory_url(category_ids[0]), notice: "Transaction#{category_ids.length > 1 ? "s were" : 'was'} successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -75,10 +75,16 @@ class TrnsactionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def trnsaction_params
-      params.require(:trnsaction).permit(:name, :amount, :ctegory_id)
+      params.require(:trnsaction).permit(:name, :amount, :ctegories)
     end
 
     def set_categories_array
       @category_array = Ctegory.where(author_id: current_user.id)
+    end
+
+    def create_transaction_category(category_ids, transaction)
+      category_ids.each do |category_id|
+        TransactionCategory.create(ctegory_id: category_id, trnsaction_id: transaction.id)
+      end
     end
 end

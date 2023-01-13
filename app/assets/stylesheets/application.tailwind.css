@@ -12,7 +12,8 @@
 
 */
 
-#trnsaction_ctegory_id {
-  width: 100%;
-  margin-top: 16px;
+
+#checkboxes{
+  height: 88px;
+  overflow: auto;
 }
