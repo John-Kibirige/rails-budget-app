@@ -15,7 +15,7 @@ class TrnsactionsController < ApplicationController
 
   # GET /trnsactions/new
   def new
-    @ctegories = Ctegory.all
+    @ctegories = Ctegory.where(author_id: current_user.id)
     @trnsaction = Trnsaction.new
   end
 
@@ -79,6 +79,6 @@ class TrnsactionsController < ApplicationController
     end
 
     def set_categories_array
-      @category_array = Ctegory.all
+      @category_array = Ctegory.where(author_id: current_user.id)
     end
 end

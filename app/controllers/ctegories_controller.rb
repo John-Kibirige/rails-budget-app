@@ -4,8 +4,7 @@ class CtegoriesController < ApplicationController
 
   # GET /ctegories or /ctegories.json
   def index
-    @ctegories = Ctegory.all
-
+    @ctegories = Ctegory.where(author_id: current_user.id)
   end
 
   # GET /ctegories/1 or /ctegories/1.json
