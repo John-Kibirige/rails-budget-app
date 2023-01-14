@@ -1,0 +1,21 @@
+<section id="<%= dom_id ctegory %>", class="flex gap-4 border rounded mb-4 px-2 py-2 bg-white mx-3">
+  <%= link_to ctegory_path(ctegory), class: 'block w-full flex items-center' do %>
+    <div class="font-medium mb-1 w-20 h-20 mr-4">
+      <img src="<%= ctegory.icon %>" alt=<%="#{ctegory.name}-avatar"%> class="block w-full h-full rounded">
+    </div>
+
+    <div class="flex items-center justify-between">
+      <div class="">
+        <p class="font-medium mb-1">
+          <%= ctegory.name %>
+        </p>
+        <small class="block w-20"><%= ctegory.created_at.to_time.strftime('%b %d %Y')%></small>
+      </div>
+
+      <p class=" font-bold absolute right-10">$<%= ctegory.transaction_categories.includes(:trnsaction).map{|t_cat| t_cat.trnsaction.amount}.sum %></p>
+    </div>
+    </div>
+  <% end %>
+</section>
+
+

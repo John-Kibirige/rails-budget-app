@@ -1,0 +1,36 @@
+<%= form_with(model: trnsaction, url: trnsactions_path, class: "contents") do |form| %>
+  <% if trnsaction.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(trnsaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+      <ul>
+        <% trnsaction.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :amount %>
+    <%= form.text_field :amount, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div id="checkboxes" class="mb-3 border border-slate-600 p-2 scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-900 h-32">
+    <% categories.each do |category|%>
+      <div>
+        <%= form.check_box :categories, {multiple: true}, category.id, nil%>
+        <%= form.label category.name %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit 'Save', class: "rounded-lg py-3 px-5 bg-zei-green text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
