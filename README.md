@@ -41,7 +41,7 @@ After you're finished please remove all the comments and instructions!
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
   - [🚀 Live Demo](#live-demo)
-  - [🚀 Live Demo](#video-demo)
+  - [🚀 Video Demo](#video-demo)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -105,7 +105,7 @@ After you're finished please remove all the comments and instructions!
 
 ## 🚀 Video description <a name="video-demo"></a>
 
-- [Live Demo Link](https://rails-budget-app-wtk2.onrender.com/)
+- [Video Demo Link](https://rails-budget-app-wtk2.onrender.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
