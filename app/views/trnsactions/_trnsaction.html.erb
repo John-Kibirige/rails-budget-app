@@ -6,7 +6,10 @@
           <strong class="block font-medium mb-1"> <%= trnsaction.name.capitalize %></strong>
         </p>
         <small>Transaction id: <%= trnsaction.created_at.strftime('%s%L')%></small>
-        <p><%= trnsaction.created_at.strftime('%I:%M %p').downcase %></p>
+        <p>
+        <%= trnsaction.created_at.strftime('%b %d %Y')%>
+        <%= trnsaction.created_at.strftime(' -- %I:%M %p').downcase %>
+        </p>
       </div>
       <p class="my-5">
         <strong class="block font-medium mb-1"><%= trnsaction.amount %></strong>

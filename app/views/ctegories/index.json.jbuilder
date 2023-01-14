@@ -1,1 +1,1 @@
-json.array! @ctegories, partial: "ctegories/ctegory", as: :ctegory
+json.array! @ctegories, partial: 'ctegories/ctegory', as: :ctegory

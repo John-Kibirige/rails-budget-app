@@ -1,7 +1,7 @@
 class TrnsactionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_trnsaction, only: %i[ show edit update destroy ]
-  before_action :set_categories_array , only: [:edit, :update, :new, :create]
+  before_action :set_trnsaction, only: %i[show edit update destroy]
+  before_action :set_categories_array, only: %i[edit update new create]
 
   # GET /trnsactions or /trnsactions.json
   def index
@@ -10,8 +10,7 @@ class TrnsactionsController < ApplicationController
   end
 
   # GET /trnsactions/1 or /trnsactions/1.json
-  def show
-  end
+  def show; end
 
   # GET /trnsactions/new
   def new
@@ -20,24 +19,25 @@ class TrnsactionsController < ApplicationController
   end
 
   # GET /trnsactions/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /trnsactions or /trnsactions.json
   def create
-    name = params["trnsaction"]["name"]
-    amount =params["trnsaction"]["amount"]
-    category_ids = params["trnsaction"]["categories"]
+    name = params['trnsaction']['name']
+    amount = params['trnsaction']['amount']
+    category_ids = params['trnsaction']['categories']
 
     @trnsaction = Trnsaction.new(name: name, amount: amount)
     @trnsaction.author_id = current_user.id
-
 
     respond_to do |format|
       if @trnsaction.save
         # create save this to the transaction categories table
         create_transaction_category(category_ids, @trnsaction)
-        format.html { redirect_to ctegory_url(category_ids[0]), notice: "Transaction#{category_ids.length > 1 ? "s were" : 'was'} successfully created." }
+        format.html do
+          redirect_to ctegory_url(category_ids[0]),
+                      notice: "Transaction#{category_ids.length > 1 ? 's were' : 'was'} successfully created."
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -48,7 +48,7 @@ class TrnsactionsController < ApplicationController
   def update
     respond_to do |format|
       if @trnsaction.update(trnsaction_params)
-        format.html { redirect_to trnsaction_url(@trnsaction), notice: "Trnsaction was successfully updated." }
+        format.html { redirect_to trnsaction_url(@trnsaction), notice: 'Trnsaction was successfully updated.' }
         format.json { render :show, status: :ok, location: @trnsaction }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -62,29 +62,30 @@ class TrnsactionsController < ApplicationController
     @trnsaction.destroy
 
     respond_to do |format|
-      format.html { redirect_to trnsactions_url, notice: "Trnsaction was successfully destroyed." }
+      format.html { redirect_to trnsactions_url, notice: 'Trnsaction was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_trnsaction
-      @trnsaction = Trnsaction.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def trnsaction_params
-      params.require(:trnsaction).permit(:name, :amount, :ctegories)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_trnsaction
+    @trnsaction = Trnsaction.find(params[:id])
+  end
 
-    def set_categories_array
-      @category_array = Ctegory.where(author_id: current_user.id)
-    end
+  # Only allow a list of trusted parameters through.
+  def trnsaction_params
+    params.require(:trnsaction).permit(:name, :amount, :ctegories)
+  end
 
-    def create_transaction_category(category_ids, transaction)
-      category_ids.each do |category_id|
-        TransactionCategory.create(ctegory_id: category_id, trnsaction_id: transaction.id)
-      end
+  def set_categories_array
+    @category_array = Ctegory.where(author_id: current_user.id)
+  end
+
+  def create_transaction_category(category_ids, transaction)
+    category_ids.each do |category_id|
+      TransactionCategory.create(ctegory_id: category_id, trnsaction_id: transaction.id)
     end
+  end
 end

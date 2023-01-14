@@ -1,1 +1,1 @@
-json.partial! "ctegories/ctegory", ctegory: @ctegory
+json.partial! 'ctegories/ctegory', ctegory: @ctegory

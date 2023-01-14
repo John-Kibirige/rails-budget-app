@@ -1,1 +1,1 @@
-json.array! @trnsactions, partial: "trnsactions/trnsaction", as: :trnsaction
+json.array! @trnsactions, partial: 'trnsactions/trnsaction', as: :trnsaction
