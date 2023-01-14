@@ -105,7 +105,7 @@ After you're finished please remove all the comments and instructions!
 
 ## 🚀 Video description <a name="video-demo"></a>
 
-- [Video Demo Link](https://rails-budget-app-wtk2.onrender.com/)
+- [Video Demo Link](https://www.loom.com/share/0dd17a7aae514a60880fc52b42496ef3)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
