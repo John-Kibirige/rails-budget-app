@@ -60,7 +60,7 @@ After you're finished please remove all the comments and instructions!
 <!-- PROJECT DESCRIPTION -->
 
 # 📖 Ontroise app <a name="about-project"></a>
-**The Ontroise app** is a mobile web application where you can manage your budget. You have a list of transactions associated with a category, so that you can see how much money you spent and on what.
+**The Ontroise app** is a mobile web application built with ruby on rails that enables you to manage your budget. You have a list of transactions associated with a category, so that you can see how much money you spent and on what.
 
 ## 🛠 Built With <a name="built-with"></a>
 
